@@ -152,7 +152,7 @@ public class GSDRoadIntersectionEditor : Editor {
             var temp = (GSD.Roads.GSDIntersection)System.Activator.CreateInstance(item);
             iIntersectionTypes.Add(temp.DisplayName);
         }
-    }
+  }
 	
 	public override void OnInspectorGUI(){
 		if(Event.current.type == EventType.ValidateCommand){
@@ -214,14 +214,15 @@ public class GSDRoadIntersectionEditor : Editor {
 				EditorGUILayout.EndVertical();
 			}
 		}
+
 		Line();
-
-
-        //Option: Intersection stop type:
-        t_iDefaultIntersectionType.enumValueIndex = (int)EditorGUILayout.Popup("Intersection type:", (int)tInter.iDefaultIntersectionType, iIntersectionTypes.ToArray());
-
-
-        if(tInter.iDefaultIntersectionType == GSDRoadIntersection.iIntersectionTypeEnum.TrafficLight1 || tInter.iDefaultIntersectionType == GSDRoadIntersection.iIntersectionTypeEnum.TrafficLight2){
+		
+		
+		//Option: Intersection stop type:
+		t_iDefaultIntersectionType.enumValueIndex = (int)EditorGUILayout.Popup("Intersection stop type:",(int)tInter.iDefaultIntersectionType, iIntersectionTypeEnumDescriptions);
+		
+		
+		if(tInter.iDefaultIntersectionType == GSDRoadIntersection.iIntersectionTypeEnum.TrafficLight1 || tInter.iDefaultIntersectionType == GSDRoadIntersection.iIntersectionTypeEnum.TrafficLight2){
 			//Option: Traffic light timing type:
 			t_lType.enumValueIndex = (int)EditorGUILayout.Popup("Traffic light timing:",(int)tInter.lType, iTrafficLightSequenceTypeDesc);
 			
